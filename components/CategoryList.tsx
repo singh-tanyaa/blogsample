@@ -1,65 +1,50 @@
-import React from "react";
-import styles from "@/app/styles/categoryList.module.css";
+import {useEffect, useState} from "react";
+// import styles from "@/app/styles/categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import axios from "axios";
+
+
+interface Category{
+    id:string,
+    name:string
+}
+
 
 const CategoryList: React.FC = () => {
+   const[categories,setCategories]=useState<Category[]>([])
+useEffect(()=>{
+async function getCategories(){
+    await axios.get("https://apiblog.peymagen.com/api/category/")
+    .then((item)=>setCategories(item.data.data))
+
+   
+
+}
+getCategories()
+
+},[]) 
+console.log(categories);
+
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Popular Categories</h1>
-      <div className={styles.categories}>
-        <Link href="/blog?cat=style" className={`${styles.category} ${styles.style}`}>
-          <Image
-            src="/logo.webp"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          style
-        </Link>
-        <Link href={'/blog'} className={`${styles.category} ${styles.fashion}`}>
-          <Image
-            src="/logo.webp"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          fashion
-        </Link>
-        <Link href={'/blog'} className={`${styles.category} ${styles.food}`}>
-          <Image
-            src="/logo.webp"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          food
-        </Link>
-        <Link href={'/blog'} className={`${styles.category} ${styles.travel}`}>
-          <Image
-            src="/logo.webp"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          travel
-        </Link>
-        <Link href="/blog?cat=style" className={`${styles.category} ${styles.culture}`}>
-          <Image
-            src="/logo.webp"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          culture
-        </Link>
-      </div>
+   <div className="flex flex-row  px-16 my-20 gap-20">
+
+{  categories?categories.map((item)=>{
+    return(
+
+<div className="flex flex-row  justify-center w-60 h-24 shadow-lg rounded-[8px] hover:shadow-2xl transition-all duration-300"  key={item.id}> 
+    <div className="flex flex-row w-full items-center px-5 gap-14">
+        <Image src="/logo.webp" alt="cat-logo" width={32} height={32}/>
+     <span className="font-semibold text-xl">{item.name}</span>
+        
     </div>
+</div>
+
+)
+}):
+<span>No data found!!</span>
+}
+   </div>
   );
 };
 
