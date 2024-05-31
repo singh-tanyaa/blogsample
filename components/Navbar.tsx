@@ -11,7 +11,7 @@ interface Link {
 const links: Link[] = [
   { route: "/", name: "Home" },
   { route: "/blogs", name: "Blogs" },
-  { route: "/contact", name: "Contact" },
+  { route: "/about", name: "About" },
   { route: "/signup", name: "Sign Up" },
   { route: "/login", name: "Login" },
 ];
