@@ -1,5 +1,6 @@
 import React from 'react'
 import '../app/globals.css'
+import Link from 'next/link'
 type Props = {}
 
 const Footer = () => {
@@ -26,14 +27,14 @@ const Footer = () => {
           <div className="quick_links">
             <h3>Quick Links</h3>
             <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Blogs</li>
-            <li>Dashboard</li>
-              {/* <Link to={"/"}>Home</Link>
-              <Link to={"/blogs"}>Blogs</Link>
-              <Link to={"/about"}>About</Link>
-              <Link to={"/dashboard"}>Dashboard</Link> */}
+            <li><Link href={"/"}>Home</Link></li>
+            <li>
+              <Link href={"/about"}>About</Link></li>
+            <li> <Link href={"/blogs"}>Blogs</Link></li>
+            {/* <li>Dashboard</li> */}
+               
+             
+              {/* <Link href={"/dashboard"}>Dashboard</Link> */}
             </ul>
           </div>
           <div className="categories">

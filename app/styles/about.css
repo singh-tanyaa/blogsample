@@ -1,0 +1,22 @@
+.about h2 {
+    font-size: 1.75rem;
+  }
+  .about .container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 1500px;
+    max-width: 1500px;
+    color: #fff;
+    padding: 20px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+  }
+  .about .container p {
+    color: rgb(206, 18, 18);
+  }
+  @media (max-width: 1520px) {
+    .about .container {
+      min-width: 100%;
+    }
+  }
